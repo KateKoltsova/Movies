@@ -1,6 +1,6 @@
 <?php
 
-namespace Aigletter\Framework\Interfaces;
+namespace Framework\Interfaces;
 
 interface RunnableInterface
 {

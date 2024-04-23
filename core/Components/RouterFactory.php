@@ -1,6 +1,6 @@
 <?php
 
-namespace Aigletter\Framework\Components;
+namespace Framework\Components;
 
 use Exception;
 
@@ -8,7 +8,6 @@ class RouterFactory extends ComponentFactoryAbstract
 {
     protected function createConcreteComponent()
     {
-//        return new Router();
         $router = new Router();
 
         if (empty($this->arguments['routes'])) {

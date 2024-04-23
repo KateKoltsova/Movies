@@ -1,12 +1,12 @@
 <?php
 
-namespace Aigletter\Framework\Components;
+namespace Framework\Components;
 
-use Aigletter\Framework\Exceptions\MethodNotAllowedException;
-use Aigletter\Framework\Exceptions\NotFoundException;
-use Aigletter\Framework\Exceptions\NotImplementedException;
-use Aigletter\Framework\Exceptions\RequestException;
-use Aigletter\Framework\Interfaces\RouterInterface;
+use Framework\Exceptions\MethodNotAllowedException;
+use Framework\Exceptions\NotFoundException;
+use Framework\Exceptions\NotImplementedException;
+use Framework\Exceptions\RequestException;
+use Framework\Interfaces\RouterInterface;
 use ReflectionMethod;
 
 class Router implements RouterInterface
@@ -97,6 +97,16 @@ class Router implements RouterInterface
             }
 
             $this->args[] = $arg;
+        }
+    }
+
+    public function addRoute(string $uri, $method): string
+    {
+        if (empty($uri) || empty($method)) {
+            throw new \Exception("Routing parameters can't be empty!" . '</br>');
+        } else {
+            $this->router[$uri] = $method;
+            return "Adding action for uri $uri successful!" . '</br>';
         }
     }
 }

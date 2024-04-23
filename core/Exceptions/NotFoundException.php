@@ -1,6 +1,6 @@
 <?php
 
-namespace Aigletter\Framework\Exceptions;
+namespace Framework\Exceptions;
 
 use Exception;
 

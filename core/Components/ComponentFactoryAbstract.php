@@ -1,6 +1,6 @@
 <?php
 
-namespace Aigletter\Framework\Components;
+namespace Framework\Components;
 
 abstract class ComponentFactoryAbstract
 {

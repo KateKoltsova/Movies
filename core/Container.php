@@ -1,6 +1,6 @@
 <?php
 
-namespace Aigletter\Framework;
+namespace Framework;
 
 use Exception;
 use ReflectionClass;

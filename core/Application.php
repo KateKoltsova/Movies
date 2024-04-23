@@ -1,10 +1,8 @@
 <?php
 
-namespace Aigletter\Framework;
+namespace Framework;
 
-//use Aigletter\Framework\Exceptions\GetComponentException;
-use Aigletter\Framework\Interfaces\RunnableInterface;
-use Exception;
+use Framework\Interfaces\RunnableInterface;
 
 class Application extends Container implements RunnableInterface
 {
