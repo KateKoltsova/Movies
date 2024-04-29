@@ -29,7 +29,7 @@ class Application extends Container implements RunnableInterface
     public function run()
     {
         $router = $this->getComponent('router');
-        $action = $router->route($_SERVER['REQUEST_URI']);
+        $action = $router->route($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 
         return $action();
     }

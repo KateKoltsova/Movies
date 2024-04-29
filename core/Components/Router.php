@@ -19,23 +19,28 @@ class Router implements RouterInterface
     {
     }
 
-    public function route(string $uri): callable
+    public function route(string $uri, string $requestMethod): callable
     {
         $uri = parse_url($uri, PHP_URL_PATH);
 
-        $usableAction = array_filter($this->router,
-            function ($path) use ($uri) {
-                return $path === $uri;
-            },
-            ARRAY_FILTER_USE_KEY);
-
-        if (empty($usableAction)) {
-            throw new NotFoundException();
+        if (!isset($this->router[$uri][$requestMethod])) {
+            throw new NotFoundException("Route not found for URI $uri and method $requestMethod");
         }
 
-        if (is_array($usableAction[$uri])) {
+//        $usableAction = array_filter($this->router,
+//            function ($path) use ($uri) {
+//                return $path === $uri;
+//            },
+//            ARRAY_FILTER_USE_KEY);
+//
+//        if (empty($usableAction)) {
+//            throw new NotFoundException();
+//        }
+        $method = $this->router[$uri][$requestMethod];
 
-            [$className, $methodName] = $usableAction[$uri];
+        if (is_array($method)) {
+
+            [$className, $methodName] = $method;
 
             if (!class_exists($className)) {
                 throw new NotImplementedException();
@@ -45,7 +50,7 @@ class Router implements RouterInterface
                 throw new MethodNotAllowedException();
             }
 
-            $this->getMethodParameters($className, $methodName);
+            $this->getMethodParameters($className, $methodName, $requestMethod);
 
             return function () use ($className, $methodName) {
                 $class = new $className;
@@ -53,12 +58,23 @@ class Router implements RouterInterface
             };
 
         } else {
-            return $usableAction[$uri];
+            return $method;
         }
     }
 
-    public function getMethodParameters($className, $methodName)
+    public function getMethodParameters($className, $methodName, $requestMethod)
     {
+        switch ($requestMethod) {
+            case 'GET':
+                $requestMethodParams = $_GET;
+                break;
+            case 'POST':
+                $requestMethodParams = $_POST;
+                break;
+            default:
+                $requestMethodParams = null;
+        }
+
         $reflection = new ReflectionMethod($className, $methodName);
         $parameters = $reflection->getParameters();
 
@@ -66,46 +82,41 @@ class Router implements RouterInterface
             $name = $parameter->getName();
             $getType = $parameter->getType();
 
+            if ($name == 'request') {
+                $this->args[] = $requestMethodParams;
+                continue;
+            }
+
             if ($getType && !$getType->isBuiltin()) {
                 $className = $getType->getName();
                 $arg = new $className();
             } else {
+                $requestParam = $requestMethodParams[$name] ?? null;
 
-                if (empty($_GET[$name])) {
-
-                    if ($parameter->isOptional()) {
-                        $arg = $parameter->getDefaultValue();
-                    } else {
-                        throw new RequestException();
-                    }
-                } else {
-                    $arg = $_GET[$name];
+                if (empty($requestParam) && !$parameter->isOptional()) {
+                    throw new RequestException("Missing required parameter: $name");
                 }
 
-                if ($getType && $getType->getName() == 'array') {
+                $arg = $requestParam ?? $parameter->getDefaultValue();
 
-                    if (!is_array($arg)) {
-                        $arg = explode(",", $arg);
-                    }
+                if ($getType && $getType->getName() == 'array' && !is_array($arg)) {
+                    $arg = explode(",", $arg);
+                }
 
-                } else {
-
-                    if ($getType) {
-                        settype($arg, $getType->getName());
-                    }
+                if ($getType && $getType->getName() !== 'array') {
+                    settype($arg, $getType->getName());
                 }
             }
-
             $this->args[] = $arg;
         }
     }
 
-    public function addRoute(string $uri, $method): string
+    public function addRoute(string $uri, $method, string $requestMethod): string
     {
         if (empty($uri) || empty($method)) {
             throw new \Exception("Routing parameters can't be empty!" . '</br>');
         } else {
-            $this->router[$uri] = $method;
+            $this->router[$uri][$requestMethod] = $method;
             return "Adding action for uri $uri successful!" . '</br>';
         }
     }

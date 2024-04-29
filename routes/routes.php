@@ -1,10 +1,12 @@
 <?php
 
+/** @var \Framework\Components\Router $router */
+
 //$router->addRoute('/', function () {
 //    echo 'Callback is running<br>';
 //});
 
-$router->addRoute('/product/view', [\App\Controllers\HomeController::class, 'view']);
+$router->addRoute('/movies/add', [\App\Controllers\MovieController::class, 'store'], 'POST');
 //$router->addRoute('/product/test', [\Aigletter\App\Controllers\ProductController::class, 'test']);
 //$router->addRoute('/page', [\Aigletter\App\Controllers\PageController::class, 'infoClass']);
 //$router->addRoute('/some', [\Aigletter\App\Controllers\SomeController::class, 'action']);

@@ -11,12 +11,12 @@ services:
     depends_on:
       - php
 
-  #    mysql:
-  #        image: mysql:8.0
-  #        ports:
-  #            - "3316:3306"
-  #        env_file:
-  #            - mysql.env
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3316:3306"
+    env_file:
+      - mysql.env
 
   php:
     image: php:8.1-fpm-alpine

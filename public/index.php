@@ -6,6 +6,16 @@ function dd($var)
     die();
 }
 
+function jsonResponse($data, $statusCode = 200)
+{
+    header('Content-Type: application/json');
+    http_response_code($statusCode);
+    print_r(json_encode($data));
+//    return (json_encode($data));
+//    exit;
+}
+
+
 ini_set('display_errors', '1');
 
 require_once __DIR__ . '/../autoloader.php';

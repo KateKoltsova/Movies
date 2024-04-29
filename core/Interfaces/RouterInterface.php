@@ -4,5 +4,5 @@ namespace Framework\Interfaces;
 
 interface RouterInterface
 {
-    public function route(string $uri): callable;
+    public function route(string $uri, string $requestMethod): callable;
 }
