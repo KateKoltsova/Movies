@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Framework\Exceptions\NotFoundException;
 use PDO;
 use PDOException;
 
@@ -11,12 +12,8 @@ class MovieRepository
 
     public function __construct($dsn, $username, $password)
     {
-        try {
-            $this->pdo = new PDO($dsn, $username, $password);
-            $this->createTableIfNotExists();
-        } catch (PDOException $e) {
-            die("Error of connection to database: " . $e->getMessage());
-        }
+        $this->pdo = new PDO($dsn, $username, $password);
+        $this->createTableIfNotExists();
     }
 
     private function createTableIfNotExists()
@@ -31,49 +28,85 @@ class MovieRepository
             )
         ";
 
-        try {
-            $this->pdo->exec($sql);
-        } catch (PDOException $e) {
-            die("Error of creating table: " . $e->getMessage());
-        }
+        return $this->pdo->exec($sql);
     }
 
-    public function addMovie($name, $releaseDate, $description, $image)
+    public function getAllMovies()
+    {
+        $sql = "SELECT * FROM movies ORDER BY id ASC";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $movies = $stmt->fetchALL(PDO::FETCH_ASSOC);
+
+        return $movies;
+    }
+
+    public function getMovieById($id)
+    {
+        $sql = "SELECT * FROM movies WHERE id = $id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $movie = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($movie)) {
+            throw new NotFoundException("Movie by id $id not found");
+        }
+
+        return $movie;
+    }
+
+    public function addMovie($params)
     {
         $sql = "INSERT INTO movies (name, releaseDate, description, image) VALUES (:name, :releaseDate, :description, :image)";
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindValue(':name', $name);
-        $stmt->bindValue(':releaseDate', $releaseDate);
-        $stmt->bindValue(':description', $description);
-        $stmt->bindValue(':image', $image);
-        $stmt->execute();
+        return $stmt->execute([
+            ':name' => $params['name'],
+            ':releaseDate' => $params['releaseDate'],
+            ':description' => $params['description'],
+            ':image' => $params['image']
+        ]);
     }
 
-    public function editMovie($id, $name, $releaseDate, $description, $image)
+    public function editMovie($id, $params)
     {
-        $sql = "UPDATE movies SET name = ?, releaseDate = ?, description = ?, image = ? WHERE id = ?";
-        $stmt = $this->pdo->prepare($sql);
+        $movie = $this->getMovieById($id);
 
-        try {
-            $stmt->execute([$id, $name, $releaseDate, $description, $image]);
-            echo "Movie successfully edited";
-        } catch (PDOException $e) {
-            die("Error of editing movie: " . $e->getMessage());
+        if (empty($movie)) {
+            throw new NotFoundException("Movie by id $id not found");
         }
+
+        $sql = "UPDATE movies SET ";
+        $executeParams = [];
+
+        foreach ($params as $key => $value) {
+            if ($key == 'id') {
+                continue;
+            }
+
+            $sql .= "$key = :$key, ";
+            $executeParams[":$key"] = $value;
+        }
+
+        $sql = rtrim($sql, ', ');
+        $sql .= " WHERE id = :id";
+        $executeParams[":id"] = $id;
+
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute($executeParams);
     }
 
     public function deleteMovie($id)
     {
-        $sql = "DELETE FROM movies WHERE id = ?";
-        $stmt = $this->pdo->prepare($sql);
+        $movie = $this->getMovieById($id);
 
-        try {
-            $stmt->execute([$id]);
-            echo "Movie successfully deleted";
-        } catch (PDOException $e) {
-            die("Error of deleting movie: " . $e->getMessage());
+        if (empty($movie)) {
+            throw new NotFoundException("Movie by id $id not found");
         }
+
+        $sql = "DELETE FROM movies WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([':id' => $id]);
     }
 }

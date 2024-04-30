@@ -3,7 +3,8 @@
 namespace App\Controllers;
 
 use App\Repositories\MovieRepository;
-use PDOException;
+use Exception;
+use Framework\Exceptions\NotFoundException;
 
 class MovieController
 {
@@ -30,7 +31,19 @@ class MovieController
      */
     public function index()
     {
+        try {
+            $movies = $this->moviesRepository->getAllMovies();
 
+            return jsonResponse([
+                'success' => true,
+                'movies' => $movies
+            ]);
+        } catch (Exception $e) {
+            return jsonResponse([
+                'success' => false,
+                'message' => "Error of getting all movies: " . $e->getMessage()
+            ], $e->getCode());
+        }
     }
 
     /**
@@ -47,23 +60,18 @@ class MovieController
     public function store($request)
     {
         try {
-            $this->moviesRepository->addMovie(
-                $request['name'],
-                $request['releaseDate'],
-                $request['description'],
-                $request['image']
-            );
+            $this->moviesRepository->addMovie($request);
 
             return jsonResponse([
                 'success' => true,
                 'message' => "Movie " . $request['name'] . " successfully added"
             ]);
 
-        } catch (PDOException $e) {
+        } catch (Exception $e) {
             return jsonResponse([
                 'success' => false,
                 'message' => "Error of adding movie: " . $e->getMessage()
-            ]);
+            ], $e->getCode());
         }
     }
 
@@ -72,7 +80,26 @@ class MovieController
      */
     public function show(string $id)
     {
-        //
+        try {
+            $movie = $this->moviesRepository->getMovieById($id);
+
+            return jsonResponse([
+                'success' => true,
+                'movie' => $movie
+            ]);
+
+        } catch (NotFoundException $e) {
+            return jsonResponse([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 404);
+
+        } catch (Exception $e) {
+            return jsonResponse([
+                'success' => false,
+                'message' => "Error of getting movie: " . $e->getMessage()
+            ], $e->getCode());
+        }
     }
 
     /**
@@ -86,9 +113,31 @@ class MovieController
     /**
      * Update the specified movie in storage.
      */
-    public function update(Request $request, string $id)
+    public function update($request, string $id)
     {
-        //
+        try {
+            $this->moviesRepository->editMovie($id, $request);
+
+            $movie = $this->moviesRepository->getMovieById($id);
+
+            return jsonResponse([
+                'success' => true,
+                'message' => "Movie by id " . $id . " successfully updated",
+                'movie' => $movie
+            ]);
+
+        } catch (NotFoundException $e) {
+            return jsonResponse([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 404);
+
+        } catch (Exception $e) {
+            return jsonResponse([
+                'success' => false,
+                'message' => "Error of updating movie: " . $e->getMessage()
+            ], $e->getCode());
+        }
     }
 
     /**
@@ -96,7 +145,26 @@ class MovieController
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $this->moviesRepository->deleteMovie($id);
+
+            return jsonResponse([
+                'success' => true,
+                'message' => "Movie by id " . $id . " successfully deleted"
+            ]);
+
+        } catch (NotFoundException $e) {
+            return jsonResponse([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 404);
+
+        } catch (Exception $e) {
+            return jsonResponse([
+                'success' => false,
+                'message' => "Error of updating movie: " . $e->getMessage()
+            ], $e->getCode());
+        }
     }
 
 }

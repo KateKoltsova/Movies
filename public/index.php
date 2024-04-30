@@ -26,7 +26,9 @@ $app = Framework\Application::getApp($config);
 
 try {
     $app->run();
-} catch (Exception $exception) {
-    echo "<h1>" . $exception->getCode() . " " . $exception->getMessage() . "</h1>";
-
+} catch (Exception $e) {
+    return jsonResponse([
+        'success' => false,
+        'message' => $e->getMessage()
+    ], $e->getCode());
 }
