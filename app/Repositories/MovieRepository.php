@@ -31,14 +31,41 @@ class MovieRepository
         return $this->pdo->exec($sql);
     }
 
-    public function getAllMovies()
+    public function getAllMovies($page, $perPage)
     {
-        $sql = "SELECT * FROM movies ORDER BY id ASC";
+        $offset = ($page - 1) * $perPage;
+
+        $sql = "SELECT * FROM movies ORDER BY id ASC LIMIT :limit OFFSET :offset";
         $stmt = $this->pdo->prepare($sql);
+
+        $stmt->bindValue(':limit', (int)$perPage, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+
         $stmt->execute();
+
         $movies = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
+        if (empty($movies)) {
+            throw new NotFoundException("Movies page not found");
+        }
+
         return $movies;
+    }
+
+    public function getTotalRecords()
+    {
+        $sql = "SELECT COUNT(*) as total FROM movies";
+        $stmt = $this->pdo->query($sql);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
+
+    public function getTotalPages($perPage)
+    {
+        $totalRecords = $this->getTotalRecords();
+        $lastPageNumber = ceil($totalRecords / $perPage);
+
+        return $lastPageNumber;
     }
 
     public function getMovieById($id)

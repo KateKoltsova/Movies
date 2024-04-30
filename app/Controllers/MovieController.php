@@ -29,15 +29,38 @@ class MovieController
     /**
      * Display a listing of the movies.
      */
-    public function index()
+    public function index($request)
     {
         try {
-            $movies = $this->moviesRepository->getAllMovies();
+            $page = (int)($request['page'] ?? 1);
+            $perPage = (int)($request['per_page'] ?? 10);
+
+            $movies = $this->moviesRepository->getAllMovies($page, $perPage);
+
+            $lastPage = (int)($this->moviesRepository->getTotalPages($perPage));
+
+            $prevPage = match (true) {
+                $page - 1 <= 0 => 1,
+                $page - 1 >= $lastPage => $lastPage - 1,
+                default => $page - 1,
+            };
+
+            $nextPage = match (true) {
+                $page + 1 >= $lastPage => $lastPage,
+                default => $page + 1,
+            };
 
             return jsonResponse([
                 'success' => true,
+                'pages' => [
+                    'current' => $page,
+                    'last' => $lastPage,
+                    'prev' => $prevPage,
+                    'next' => $nextPage,
+                ],
                 'movies' => $movies
             ]);
+
         } catch (Exception $e) {
             return jsonResponse([
                 'success' => false,
