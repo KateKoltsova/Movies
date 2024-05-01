@@ -49,6 +49,12 @@ class Router implements RouterInterface
                     }
                 }
 
+                if (!empty($_FILES)) {
+                    foreach ($_FILES as $name => $file) {
+                        $_REQUEST[$name] = $file;
+                    }
+                }
+
                 $method = $methods[$requestMethod];
 
                 if (is_array($method)) {

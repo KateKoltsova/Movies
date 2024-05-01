@@ -3,15 +3,20 @@
 namespace App\Controllers;
 
 use App\Repositories\MovieRepository;
+use App\Services\ImageService;
 use Exception;
+use Framework\Application;
 use Framework\Exceptions\NotFoundException;
 
 class MovieController
 {
-    private $moviesRepository;
+    private MovieRepository $moviesRepository;
+    private ImageService $imageService;
 
     public function __construct()
     {
+        $this->imageService = Application::getApp()->getComponent('imageService');
+
         $env = parse_ini_file(__DIR__ . '/../../mysql.env');
 
         $host = $env['MYSQL_HOST'] ?? 'mysql';
@@ -83,6 +88,10 @@ class MovieController
     public function store($request)
     {
         try {
+            $image = $request['image'];
+            $imagePath = $this->imageService->save($image);
+            $request['image'] = $imagePath;
+
             $this->moviesRepository->addMovie($request);
 
             return jsonResponse([
@@ -139,6 +148,15 @@ class MovieController
     public function update($request, string $id)
     {
         try {
+            if (isset($request['image'])) {
+                $image = $request['image'];
+                $imagePath = $this->imageService->save($image);
+                $request['image'] = $imagePath;
+
+                $movie = $this->moviesRepository->getMovieById($id);
+                $this->imageService->delete($movie['image']);
+            }
+
             $this->moviesRepository->editMovie($id, $request);
 
             $movie = $this->moviesRepository->getMovieById($id);
@@ -169,6 +187,9 @@ class MovieController
     public function destroy(string $id)
     {
         try {
+            $movie = $this->moviesRepository->getMovieById($id);
+            $this->imageService->delete($movie['image']);
+
             $this->moviesRepository->deleteMovie($id);
 
             return jsonResponse([
