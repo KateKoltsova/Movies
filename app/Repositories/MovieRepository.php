@@ -38,8 +38,8 @@ class MovieRepository
         $sql = "SELECT * FROM movies ORDER BY id ASC LIMIT :limit OFFSET :offset";
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindValue(':limit', (int)$perPage, PDO::PARAM_INT);
-        $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+        $stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 
         $stmt->execute();
 

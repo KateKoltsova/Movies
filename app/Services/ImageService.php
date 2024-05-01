@@ -15,7 +15,8 @@ class ImageService
 
     public function save($image)
     {
-        if (!file_exists($this->path) && !mkdir(dirname(__DIR__, 2) . $this->path, 0777, true)) {
+        if (!file_exists($this->path)
+            && !mkdir($this->path, 0777, true)) {
             throw new Exception("Failed to create directory: " . $this->path);
         }
 

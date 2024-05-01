@@ -37,12 +37,12 @@ class MovieController
     public function index($request)
     {
         try {
-            $page = (int)($request['page'] ?? 1);
-            $perPage = (int)($request['per_page'] ?? 10);
+            $page = $request['page'] ?? 1;
+            $perPage = $request['per_page'] ?? 10;
 
             $movies = $this->moviesRepository->getAllMovies($page, $perPage);
 
-            $lastPage = (int)($this->moviesRepository->getTotalPages($perPage));
+            $lastPage = $this->moviesRepository->getTotalPages($perPage);
 
             $prevPage = match (true) {
                 $page - 1 <= 0 => 1,
@@ -58,7 +58,7 @@ class MovieController
             return jsonResponse([
                 'success' => true,
                 'pages' => [
-                    'current' => $page,
+                    'current' => (int) $page,
                     'last' => $lastPage,
                     'prev' => $prevPage,
                     'next' => $nextPage,
@@ -210,5 +210,4 @@ class MovieController
             ], $e->getCode());
         }
     }
-
 }
