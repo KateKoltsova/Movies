@@ -10,10 +10,18 @@ class MovieRepository
 {
     private $pdo;
 
-    public function __construct($dsn, $username, $password)
+    public function __construct($dsn, $username, $password, $database)
     {
         $this->pdo = new PDO($dsn, $username, $password);
+        $this->createSchemaIfNotExists($database);
         $this->createTableIfNotExists();
+    }
+
+    private function createSchemaIfNotExists($database)
+    {
+        $sql = "CREATE SCHEMA IF NOT EXISTS " . $database;
+
+        return $this->pdo->exec($sql);
     }
 
     private function createTableIfNotExists()
@@ -112,8 +120,14 @@ class MovieRepository
                 continue;
             }
 
-            $sql .= "$key = :$key, ";
-            $executeParams[":$key"] = $value;
+            if ($key == 'image' && isset($value['name'])) {
+                continue;
+            }
+
+            if (isset($movie[$key])) {
+                $sql .= "$key = :$key, ";
+                $executeParams[":$key"] = $value;
+            }
         }
 
         $sql = rtrim($sql, ', ');

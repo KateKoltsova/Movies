@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Repositories\MovieRepository;
 use App\Services\ImageService;
+use App\Services\Validator;
 use Exception;
 use Framework\Application;
 use Framework\Exceptions\NotFoundException;
@@ -27,7 +28,8 @@ class MovieController
         $this->moviesRepository = new MovieRepository(
             'mysql:host=' . $host . ';dbname=' . $database,
             $user,
-            $password
+            $password,
+            $database
         );
     }
 
@@ -55,22 +57,27 @@ class MovieController
                 default => $page + 1,
             };
 
-            return jsonResponse([
-                'success' => true,
-                'pages' => [
-                    'current' => (int) $page,
-                    'last' => $lastPage,
-                    'prev' => $prevPage,
-                    'next' => $nextPage,
-                ],
-                'movies' => $movies
-            ]);
+            $_SESSION['response']['pages'] = [
+                'perPage' => $perPage,
+                'current' => (int)$page,
+                'last' => $lastPage,
+                'prev' => $prevPage,
+                'next' => $nextPage,
+            ];
+            $_SESSION['response']['movies'] = $movies;
+
+            $viewPath = Application::getApp()->resources['views'] . 'moviesList.php';
+
+            ob_start();
+            include $viewPath;
+            $content = ob_get_clean();
+
+            echo $content;
 
         } catch (Exception $e) {
-            return jsonResponse([
-                'success' => false,
-                'message' => "Error of getting all movies: " . $e->getMessage()
-            ], $e->getCode());
+            $_SESSION['response']['error'] = "Error of getting all movies: " . $e->getMessage();
+            header('Location: /');
+            exit();
         }
     }
 
@@ -79,7 +86,13 @@ class MovieController
      */
     public function create()
     {
+        $viewPath = Application::getApp()->resources['views'] . 'createForm.php';
 
+        ob_start();
+        include $viewPath;
+        $content = ob_get_clean();
+
+        echo $content;
     }
 
     /**
@@ -88,22 +101,31 @@ class MovieController
     public function store($request)
     {
         try {
+            $errors = Validator::validateMovieData($request);
+
+            if (!empty($errors)) {
+                $_SESSION['errors'] = $errors;
+                $_SESSION['response']['oldMovieData'] = $request;
+                header('Location: /movies/create');
+                exit();
+            } else {
+                unset($_SESSION['errors'], $_SESSION['response']['oldMovieData']);
+            }
+
             $image = $request['image'];
             $imagePath = $this->imageService->save($image);
             $request['image'] = $imagePath;
 
             $this->moviesRepository->addMovie($request);
 
-            return jsonResponse([
-                'success' => true,
-                'message' => "Movie " . $request['name'] . " successfully added"
-            ]);
+            $_SESSION['response']['message'] = "Movie " . $request['name'] . " successfully added";
+            header('Location: /movies/create');
+            exit();
 
         } catch (Exception $e) {
-            return jsonResponse([
-                'success' => false,
-                'message' => "Error of adding movie: " . $e->getMessage()
-            ], $e->getCode());
+            $_SESSION['response']['error'] = "Error of adding movie: " . $e->getMessage();
+            header('Location: /movies/create');
+            exit();
         }
     }
 
@@ -115,22 +137,20 @@ class MovieController
         try {
             $movie = $this->moviesRepository->getMovieById($id);
 
-            return jsonResponse([
-                'success' => true,
-                'movie' => $movie
-            ]);
+            $_SESSION['response']['movie'] = $movie;
 
-        } catch (NotFoundException $e) {
-            return jsonResponse([
-                'success' => false,
-                'message' => $e->getMessage()
-            ], 404);
+            $viewPath = Application::getApp()->resources['views'] . 'movieView.php';
+
+            ob_start();
+            include $viewPath;
+            $content = ob_get_clean();
+
+            echo $content;
 
         } catch (Exception $e) {
-            return jsonResponse([
-                'success' => false,
-                'message' => "Error of getting movie: " . $e->getMessage()
-            ], $e->getCode());
+            $_SESSION['response']['error'] = "Error of getting movie: " . $e->getMessage();
+            header('Location: /movies');
+            exit();
         }
     }
 
@@ -139,7 +159,24 @@ class MovieController
      */
     public function edit(string $id)
     {
-        //
+        try {
+            $movie = $this->moviesRepository->getMovieById($id);
+
+            $_SESSION['response']['movie'] = $movie;
+
+            $viewPath = Application::getApp()->resources['views'] . 'updateForm.php';
+
+            ob_start();
+            include $viewPath;
+            $content = ob_get_clean();
+
+            echo $content;
+
+        } catch (Exception $e) {
+            $_SESSION['response']['error'] = "Error of getting movie: " . $e->getMessage();
+            header('Location: /movies/' . $id);
+            exit();
+        }
     }
 
     /**
@@ -148,7 +185,18 @@ class MovieController
     public function update($request, string $id)
     {
         try {
-            if (isset($request['image'])) {
+            $errors = Validator::validateMovieData($request);
+
+            if (!empty($errors)) {
+                $_SESSION['errors'] = $errors;
+                $_SESSION['response']['oldMovieData'] = $request;
+                header('Location: /movies/' . $id . '/edit');
+                exit();
+            } else {
+                unset($_SESSION['errors'], $_SESSION['response']['oldMovieData']);
+            }
+
+            if (isset($request['image']) && !empty($request['image']['name'])) {
                 $image = $request['image'];
                 $imagePath = $this->imageService->save($image);
                 $request['image'] = $imagePath;
@@ -159,25 +207,14 @@ class MovieController
 
             $this->moviesRepository->editMovie($id, $request);
 
-            $movie = $this->moviesRepository->getMovieById($id);
-
-            return jsonResponse([
-                'success' => true,
-                'message' => "Movie by id " . $id . " successfully updated",
-                'movie' => $movie
-            ]);
-
-        } catch (NotFoundException $e) {
-            return jsonResponse([
-                'success' => false,
-                'message' => $e->getMessage()
-            ], 404);
+            $_SESSION['response']['message'] = "Movie " . $id . " successfully updated";
+            header('Location: /movies/' . $id);
+            exit();
 
         } catch (Exception $e) {
-            return jsonResponse([
-                'success' => false,
-                'message' => "Error of updating movie: " . $e->getMessage()
-            ], $e->getCode());
+            $_SESSION['response']['error'] = "Error of updating movie: " . $e->getMessage();
+            header('Location: /movies/' . $id);
+            exit();
         }
     }
 
@@ -192,22 +229,13 @@ class MovieController
 
             $this->moviesRepository->deleteMovie($id);
 
-            return jsonResponse([
-                'success' => true,
-                'message' => "Movie by id " . $id . " successfully deleted"
-            ]);
-
-        } catch (NotFoundException $e) {
-            return jsonResponse([
-                'success' => false,
-                'message' => $e->getMessage()
-            ], 404);
-
+            $_SESSION['response']['message'] = "Movie by id " . $id . " successfully deleted";
+            header('Location: /movies');
+            exit();
         } catch (Exception $e) {
-            return jsonResponse([
-                'success' => false,
-                'message' => "Error of updating movie: " . $e->getMessage()
-            ], $e->getCode());
+            $_SESSION['response']['error'] = "Error of deleting movie: " . $e->getMessage();
+            header('Location: /movies/' . $id);
+            exit();
         }
     }
 }

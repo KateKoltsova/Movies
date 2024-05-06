@@ -21,7 +21,6 @@ function autoload($classFullName, $configNamespaces)
     }
 }
 
-//spl_autoload_register('autoload');
 spl_autoload_register(function ($classFullName) use ($configNamespaces) {
     autoload($classFullName, $configNamespaces);
 });

@@ -1,0 +1,972 @@
+{
+	"info": {
+		"_postman_id": "96c89860-a14b-4c04-a759-68e053c8bf07",
+		"name": "movies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30439365"
+	},
+	"item": [
+		{
+			"name": "home",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.24.0"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 May 2024 07:42:53 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.27"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <title>Movies</title>\n        <link rel=\"stylesheet\" href=\"/css/styles.css\">\n\n\n    </head>\n    <body>\n        <header class=\"header\">\n            <div class=\"container\">\n                <h1>Movies</h1>\n                <nav>\n                    <ul>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/movies/create';\">Create Movie</button>\n                        </li>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/movies';\">Movies list</button>\n                        </li>\n                    </ul>\n                </nav>\n            </div>\n        </header>\n        <div class=\"message-container\">\n            <h1>Welcome to movies</h1>\n        </div>\n    </body>\n</html>"
+				}
+			]
+		},
+		{
+			"name": "index movies",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					],
+					"query": [
+						{
+							"key": "per_page",
+							"value": "15",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "15",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.24.0"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 May 2024 07:43:05 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.27"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <title>Movies</title>\n        <link rel=\"stylesheet\" href=\"/css/styles.css\">\n\n\n    </head>\n    <body>\n        <header class=\"header\">\n            <div class=\"container\">\n                <h1>Movies</h1>\n                <nav>\n                    <ul>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/';\">Home</button>\n                        </li>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/movies/create';\">Create Movie</button>\n                        </li>\n                    </ul>\n                </nav>\n            </div>\n        </header>\n        <div class=\"button-container\">\n            <label for=\"per_page\">Per page: </label>\n            <select name=\"per_page\" id=\"per_page\" onchange=\"window.location.href = '/movies?per_page=' + this.value;\">\n                <option value=\"5\" >5</option>\n                <option value=\"10\" selected>10</option>\n                <option value=\"20\" >20</option>\n                <option value=\"40\" >40</option>\n                <option value=\"80\" >80</option>\n            </select>\n        </div>\n        <div class=\"button-container\">\n            <button class=\"pagination-button\">Current page 1</button>\n            <button class=\"pagination-button\"\n                onclick=\"window.location.href = '/movies?page=2&per_page=10';\">\n            Next\n        </button>\n        </div>\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"row\">\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/1ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 1                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/1';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/1\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/2ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 2                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/2';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/2\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/3ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 3                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/3';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/3\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/4ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 4                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/4';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/4\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/5ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 5                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/5';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/5\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/6ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 6                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/6';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/6\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/7ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 7                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/7';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/7\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/8ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 8                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/8';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/8\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/9ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 9                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/9';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/9\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/10ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 10                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/10';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/10\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </body>\n</html>"
+				}
+			]
+		},
+		{
+			"name": "show movie",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies/21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"21"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/movies/21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"21"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.24.0"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 May 2024 07:45:42 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.27"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <title>Movies</title>\n        <link rel=\"stylesheet\" href=\"/css/styles.css\">\n\n\n    </head>\n    <body>\n        <header class=\"header\">\n            <div class=\"container\">\n                <h1>Movies</h1>\n                <nav>\n                    <ul>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/';\">Home</button>\n                        </li>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/movies/create';\">Create Movie</button>\n                        </li>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/movies';\">Movies list</button>\n                        </li>\n                    </ul>\n                </nav>\n            </div>\n        </header>\n        <div class=\"movie-container\">\n            <div class=\"movie-info\">\n                <div class=\"image\">\n                    <img src=\"/files/images/66394ahsoka.jpg\" alt=\"Image\">\n        \n                </div>\n                <div class=\"details\">\n                    <div class=\"movie-header\">\n                        <h2 class=\"movie-name\">\n                    Фильм 21                </h2>\n                        <div class=\"button-container\">\n                            <button class=\"edit-button\"\n                            onclick=\"window.location.href = '/movies/21/edit';\">\n                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\" width=\"24\" height=\"24\">\n                                    <path fill=\"currentColor\"\n                                  d=\"M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z\"/>\n                                </svg>\n                            </button>\n                            <form id=\"deleteForm\" action=/movies/21\" method=\"POST\">\n                                <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                <button class=\"delete-button\" type=\"submit\">\n                                    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 512\" width=\"24\" height=\"24\">\n                                        <path fill=\"currentColor\"\n                                      d=\"M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z\"/>\n                                    </svg>\n                                </button>\n                            </form>\n                        </div>\n                    </div>\n                    <label>Release Date:</label>\n                    <span>2024-02-04</span>\n                    <br>\n                    <br>\n                    <label>Description:</label>\n                    <span>Описание фильма 21</span>\n                </div>\n            </div>\n        </div>\n    </body>\n</html>"
+				}
+			]
+		},
+		{
+			"name": "create movies",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/movies/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.24.0"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 May 2024 07:46:19 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.27"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <title>Movies</title>\n        <link rel=\"stylesheet\" href=\"/css/styles.css\">\n\n\n    </head>\n    <body>\n        <header class=\"header\">\n            <div class=\"container\">\n                <h1>Movies</h1>\n                <nav>\n                    <ul>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/';\">Home</button>\n                        </li>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/movies';\">Movies list</button>\n                        </li>\n                    </ul>\n                </nav>\n            </div>\n        </header>\n        <div class=\"form-container\">\n            <h1>Create Movie</h1>\n            <form action=\"/movies\" method=\"POST\" enctype=\"multipart/form-data\">\n                <label for=\"name\">Name \n                    <span>*</span>:\n                </label>\n                <input type=\"text\" id=\"name\" name=\"name\"\n               required >\n                <label for=\"releaseDate\">Release Date \n                    <span>*</span>:\n                </label>\n                <input type=\"date\" id=\"releaseDate\" name=\"releaseDate\"\n               required >\n                <label for=\"description\">Description:</label>\n                <textarea id=\"description\" name=\"description\" rows=\"4\"\n                  cols=\"50\"></textarea>\n                <label for=\"image\">Image \n                    <span>*</span>:\n                </label>\n                <input type=\"file\" id=\"image\" name=\"image\" accept=\"image/*\" required>\n                <input class=\"button green\" type=\"submit\" value=\"Submit\">\n    \n            </form>\n        </div>\n    </body>\n</html>"
+				}
+			]
+		},
+		{
+			"name": "store movie",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Фильм 21",
+							"type": "text"
+						},
+						{
+							"key": "releaseDate",
+							"value": "2024-02-04",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Описание фильма 21",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/katekoltsova/Downloads/ahsoka.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Фильм 21",
+									"type": "text"
+								},
+								{
+									"key": "releaseDate",
+									"value": "2024-02-04",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Описание фильма 21",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/katekoltsova/Downloads/ahsoka.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.24.0"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 May 2024 07:44:25 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.27"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <title>Movies</title>\n        <link rel=\"stylesheet\" href=\"/css/styles.css\">\n\n\n    </head>\n    <body>\n        <header class=\"header\">\n            <div class=\"container\">\n                <h1>Movies</h1>\n                <nav>\n                    <ul>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/';\">Home</button>\n                        </li>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/movies';\">Movies list</button>\n                        </li>\n                    </ul>\n                </nav>\n            </div>\n        </header>\n        <div class=\"message-container\">Movie Фильм 21 successfully added</div>\n        <div class=\"form-container\">\n            <h1>Create Movie</h1>\n            <form action=\"/movies\" method=\"POST\" enctype=\"multipart/form-data\">\n                <label for=\"name\">Name \n                    <span>*</span>:\n                </label>\n                <input type=\"text\" id=\"name\" name=\"name\"\n               required >\n                <label for=\"releaseDate\">Release Date \n                    <span>*</span>:\n                </label>\n                <input type=\"date\" id=\"releaseDate\" name=\"releaseDate\"\n               required >\n                <label for=\"description\">Description:</label>\n                <textarea id=\"description\" name=\"description\" rows=\"4\"\n                  cols=\"50\"></textarea>\n                <label for=\"image\">Image \n                    <span>*</span>:\n                </label>\n                <input type=\"file\" id=\"image\" name=\"image\" accept=\"image/*\" required>\n                <input class=\"button green\" type=\"submit\" value=\"Submit\">\n    \n            </form>\n        </div>\n    </body>\n</html>"
+				}
+			]
+		},
+		{
+			"name": "update movie",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Отредактированный фильм 21",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "releaseDate",
+							"value": "2024-02-04",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "about movie11",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies/20?_method=PATCH",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"20"
+					],
+					"query": [
+						{
+							"key": "_method",
+							"value": "PATCH"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Отредактированный фильм 21",
+									"type": "text"
+								},
+								{
+									"key": "releaseDate",
+									"value": "2024-02-04",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "about movie11",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/katekoltsova/Downloads/IMG_0018.JPG",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/movies/21?_method=PATCH",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"21"
+							],
+							"query": [
+								{
+									"key": "_method",
+									"value": "PATCH"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.24.0"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 May 2024 09:06:24 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.27"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <title>Movies</title>\n        <link rel=\"stylesheet\" href=\"/css/styles.css\">\n\n\n    </head>\n    <body>\n        <header class=\"header\">\n            <div class=\"container\">\n                <h1>Movies</h1>\n                <nav>\n                    <ul>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/';\">Home</button>\n                        </li>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/movies/create';\">Create Movie</button>\n                        </li>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/movies';\">Movies list</button>\n                        </li>\n                    </ul>\n                </nav>\n            </div>\n        </header>\n        <div class=\"message-container\">Movie 21 successfully updated</div>\n        <div class=\"movie-container\">\n            <div class=\"movie-info\">\n                <div class=\"image\">\n                    <img src=\"/files/images/66394ahsoka.jpg\" alt=\"Image\">\n        \n                </div>\n                <div class=\"details\">\n                    <div class=\"movie-header\">\n                        <h2 class=\"movie-name\">\n                    Отредактированный фильм 21                </h2>\n                        <div class=\"button-container\">\n                            <button class=\"edit-button\"\n                            onclick=\"window.location.href = '/movies/21/edit';\">\n                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\" width=\"24\" height=\"24\">\n                                    <path fill=\"currentColor\"\n                                  d=\"M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z\"/>\n                                </svg>\n                            </button>\n                            <form id=\"deleteForm\" action=/movies/21\" method=\"POST\">\n                                <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                <button class=\"delete-button\" type=\"submit\">\n                                    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 512\" width=\"24\" height=\"24\">\n                                        <path fill=\"currentColor\"\n                                      d=\"M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z\"/>\n                                    </svg>\n                                </button>\n                            </form>\n                        </div>\n                    </div>\n                    <label>Release Date:</label>\n                    <span>2024-02-04</span>\n                    <br>\n                    <br>\n                    <label>Description:</label>\n                    <span>Описание фильма 21</span>\n                </div>\n            </div>\n        </div>\n    </body>\n</html>"
+				}
+			]
+		},
+		{
+			"name": "destroy movie",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "gg",
+							"type": "text"
+						},
+						{
+							"key": "releaseDate",
+							"value": "2024-02-04",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "about movie11",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "image",
+							"value": "image for movie11",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies/21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"21"
+					],
+					"query": [
+						{
+							"key": "_method",
+							"value": "PATCH",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "gg",
+									"type": "text"
+								},
+								{
+									"key": "releaseDate",
+									"value": "2024-02-04",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "about movie11",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"value": "image for movie11",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/movies/21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"21"
+							],
+							"query": [
+								{
+									"key": "_method",
+									"value": "PATCH",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.24.0"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 May 2024 09:07:01 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.27"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <title>Movies</title>\n        <link rel=\"stylesheet\" href=\"/css/styles.css\">\n\n\n    </head>\n    <body>\n        <header class=\"header\">\n            <div class=\"container\">\n                <h1>Movies</h1>\n                <nav>\n                    <ul>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/';\">Home</button>\n                        </li>\n                        <li>\n                            <button class=\"button\" onclick=\"window.location.href = '/movies/create';\">Create Movie</button>\n                        </li>\n                    </ul>\n                </nav>\n            </div>\n        </header>\n        <div class=\"message-container\">Movie by id 21 successfully deleted</div>\n        <div class=\"button-container\">\n            <label for=\"per_page\">Per page: </label>\n            <select name=\"per_page\" id=\"per_page\" onchange=\"window.location.href = '/movies?per_page=' + this.value;\">\n                <option value=\"5\" >5</option>\n                <option value=\"10\" selected>10</option>\n                <option value=\"20\" >20</option>\n                <option value=\"40\" >40</option>\n                <option value=\"80\" >80</option>\n            </select>\n        </div>\n        <div class=\"button-container\">\n            <button class=\"pagination-button\">Current page 1</button>\n            <button class=\"pagination-button\"\n                onclick=\"window.location.href = '/movies?page=2&per_page=10';\">\n            Next\n        </button>\n        </div>\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"row\">\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/1ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 1                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/1';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/1\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/2ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 2                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/2';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/2\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/3ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 3                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/3';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/3\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/4ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 4                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/4';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/4\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/5ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 5                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/5';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/5\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/6ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 6                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/6';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/6\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/7ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 7                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/7';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/7\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/8ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 8                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/8';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/8\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/9ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 9                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/9';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/9\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col\">\n                        <div class=\"movie-card\">\n                            <div class=\"image-container\">\n                                <img class=\"movie-image\"\n                             src=\"/files/images/10ahsoka.jpg\"\n                             alt=\"Movie Image\">\n                    \n                            </div>\n                            <div class=\"movie-details\">\n                                <div class=\"movie-header\">\n                                    <h2 class=\"movie-name\">\n                                Фильм 10                            </h2>\n                                    <div class=\"button-container\">\n                                        <button class=\"see-button\"\n                                        onclick=\"window.location.href = '/movies/10';\">\n                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" width=\"24\"\n                                         height=\"24\">\n                                                <path fill=\"currentColor\"\n                                              d=\"M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z\"/>\n                                            </svg>\n                                        </button>\n                                        <form id=\"deleteForm\" action=/movies/10\" method=\"POST\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                                            <button class=\"delete-button\" type=\"submit\">\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\"\n                                             height=\"24\">\n                                                    <path fill=\"currentColor\"\n                                                  d=\"M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12 4.293 18.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z\"/>\n                                                </svg>\n                                            </button>\n                                        </form>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </body>\n</html>"
+				}
+			]
+		}
+	]
+}

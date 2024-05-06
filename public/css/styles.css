@@ -1,0 +1,272 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background: linear-gradient(to bottom, #102444, #c0bbde);
+    color: white;
+    padding: 20px 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.col {
+    width: calc(20% - 10px);
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li button {
+    background-color: #80749a;
+    color: white;
+    border: 2px solid #80749a;
+    text-decoration: none;
+    padding: 10px;
+}
+
+nav ul li button:hover {
+    background-color: #102444;
+    border: 2px solid #102444;
+}
+
+.form-container {
+    text-align: left;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+    border-color: #80749a;
+    outline: none;
+}
+
+input[type="file"] {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    width: calc(100% - 22px);
+}
+
+input[type="file"]:valid {
+    border-color: green;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    margin: 0 10px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.green {
+    background-color: #a4c9bb;
+    border: 2px solid #a4c9bb;
+
+}
+
+.red {
+    background-color: #d8869d;
+    border: 2px solid #d8869d;
+
+}
+
+.green:hover {
+    background-color: #2b4c40;
+    border: 2px solid #2b4c40;
+    color: white;
+}
+
+.red:hover {
+    background-color: #902c4a;
+    border: 2px solid #902c4a;
+    color: white;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-button {
+    background-color: #80749a;
+    color: white;
+    border: 1px solid #80749a;
+    border-radius: 4px;
+    padding: 6px 12px;
+    margin: 0 4px;
+    cursor: pointer;
+}
+
+.pagination-button:hover {
+    background-color: #333333;
+    border-color: #333333;
+}
+
+.movie-container {
+    width: 75%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+}
+
+.movie-info {
+    display: flex;
+    align-items: flex-start;
+}
+
+.movie-header {
+    display: flex;
+    align-items: baseline;
+}
+
+.movie-card {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.movie-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.see-button,
+.edit-button,
+.delete-button {
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+    background: none;
+}
+
+.edit-button {
+    color: #005452;
+}
+
+.see-button {
+    color: #005452;
+}
+
+.delete-button {
+    color: #902c4a;
+}
+
+.image {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+.image img {
+    width: 400px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.details {
+    flex: 1;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.error-message {
+    background-color: #d0a0b5;
+    color: #861838;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px auto;
+    font-size: 14px;
+}
+
+.message-container {
+    background-color: #b7d2b6;
+    color: #005452;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px auto;
+    width: fit-content;
+}
